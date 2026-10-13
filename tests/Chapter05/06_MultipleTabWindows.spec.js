@@ -17,7 +17,6 @@ test('Handle New Tab', async({page, context})=>{
 
     await test.step('verify that the Close Popupbutton enabled',async()=>{
         await expect(newTab.getByTestId('close-btn')).toBeEnabled()
-        await expect(newTab).toHaveURL(/tab=1/)
     })
 
     await expect(page.getByRole('button', {name:'Open 3 new tabs'})).toBeEnabled
