@@ -1,0 +1,1149 @@
+testCaseId: "CD-910"
+testCaseName: "Agent_Application_QuotesV2_BOP_MultipleLocations_With_Single_PastPolicyLoss_Tenant_OwnerApplication"
+scenarioName: "Agent_Application_QuotesV2_BOP_MultipleLocations_With_Single_PastPolicyLoss_Tenant_OwnerApplication"
+summary: "V2_BOP_0007: User having Agent role should be able to create a new quote as Tenant + Owner Application for BOP policy type with Multiple Locations & Single Past Policy Loss information."
+steps:
+  - flow:
+      flowName: "LoginWithAgentV2"
+      id: 21096
+      data:
+        - flowName: "LoginWithAgentV2"
+          data:
+            - name: "Login.EmailAddressTextField|input"
+              value: "webomates.test+agentv2@gmail.com"
+            - name: "Login.PasswordTextField|input"
+              value: "webomates.test+agentv2@gmail.com"
+    groupedDescription: "LoginWithAgentV2"
+  - flow:
+      flowName: "AddAccountV2"
+      id: 20718
+      data:
+        - flowName: "AddAccountV2"
+          data:
+            - name: "AccountsV2.addAccountHeaderUnderAddAccountSection|output"
+              value: "Add Account"
+            - name: "AccountsV2.accountNameTextfieldUnderAddAccountSection|input"
+              value: "${accountName}"
+            - name: "AccountsV2.firstNameTextfieldUnderAddAccountSection|input"
+              value: "${firstName}"
+            - name: "AccountsV2.lastNameTextfieldUnderAddAccountSection|input"
+              value: "${lastName}"
+            - name: "AccountsV2.emailTextfieldUnderAddAccountSection|input"
+              value: "${email}"
+            - name: "AccountsV2.phoneNumberTextfieldUnderAddAccountSection|input"
+              value: "9988775512"
+            - name: "AccountsV2.addressLine1TextfieldUnderAddAccountSection|input"
+              value: "1122 King Rd, Oneonta"
+            - name: "AccountsV2.cityTextfieldUnderAddAccountSection|input"
+              value: "Stamford"
+            - name: "AccountsV2.stateDropdownUnderAddAccountSection|input"
+              value: "CT"
+            - name: "AccountsV2.zipCodeTextfieldUnderAddAccountSection|input"
+              value: "06905"
+    groupedDescription: "AddAccountV2"
+  - step: ""
+    commands:
+      - command: "Enter AccountsV2.searchAccountsTextfield"
+        value: "${accountName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey AccountsV2.searchAccountsTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "WaitForGUI 5"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals AccountsV2.accountNameColumnData"
+        value: "${accountName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click AccountsV2.accountNameColumnData"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click AccountApplicationsV2.newQuoteButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.PolicyTypeDropdown"
+        value: "Business Owner's Policy"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.PolicyTypeDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.NAICSCodeDropdown"
+        value: "524210"
+    number: ""
+  - step: ""
+    commands:
+      - command: "WaitForGUI 3"
+    number: ""
+  - step: ""
+    commands:
+      - command: "SelectAdvance NewQuoteV2.NaicsDropdownOption"
+        value: "524210"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.StateDropdown"
+        value: "Texas"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.StateDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.AccountDropdown"
+        value: "${accountName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.unselectAllLink"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.amtrustRadioButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.cnaRadioButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.chubbRadioButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.greatAmericanRadioButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.libertyMutualRadioButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.StartApplicationButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals IndustrySelectionV2.pageHeader"
+        value: "Industry Selection"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click IndustrySelectionV2.industrySelectionAmtrustDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter IndustrySelectionV2.industrySelectionAmtrustSearchTestfield"
+        value: "03060"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click IndustrySelectionV2.industrySelectionAmtrustOption"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click IndustrySelectionV2.industrySelectionCnaDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter IndustrySelectionV2.industrySelectionCnaSearchTestfield"
+        value: "64112_50"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click IndustrySelectionV2.industrySelectionCnaOption"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click IndustrySelectionV2.industrySelectionChubbDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter IndustrySelectionV2.industrySelectionChubbSearchTestfield"
+        value: "313"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click IndustrySelectionV2.industrySelectionChubbOption"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click IndustrySelectionV2.industrySelectionGreatAmericanDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter IndustrySelectionV2.industrySelectionGreatAmericanSearchTestfield"
+        value: "63851"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click IndustrySelectionV2.industrySelectionGreatAmericanOption"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click IndustrySelectionV2.industrySelectionLibertyMutualDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter IndustrySelectionV2.industrySelectionLibertyMutualSearchTestfield"
+        value: "45334"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click IndustrySelectionV2.industrySelectionLibertyMutualOption"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click IndustrySelectionV2.nextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.PageHeader"
+        value: "General Questions"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.BusinessName"
+        value: "BOP_0007"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Store GeneralQuestionsV2.BusinessName insuredName"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.BusinessDescription"
+        value: "test description BOP #7"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click GeneralQuestionsV2.BusinessnonprofitYesButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.BusinessEntityDropdownTextfield"
+        value: "Corporation"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey GeneralQuestionsV2.BusinessEntityDropdownTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.startYearTextField"
+        value: "2024"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey GeneralQuestionsV2.startYearTextField"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.yearsOfManagementExperienceInIndustryTextfield"
+        value: "90"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.annualRevenueTextfield"
+        value: "$8,080"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.totalNumberOfFullTimeEmployeesTextfield"
+        value: "0"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.totalNumberOfPartTimeEmployeesTextfield"
+        value: "4"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.totalPayrollTextfield"
+        value: "$5,080"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.PolicyEffectiveDate"
+        value: "${16DaysFromCurrentDate}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.PolicyExpiryDate"
+        value: "${sameDateNextYear}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click GeneralQuestionsV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals LocationsV2.PageHeader"
+        value: "Location and Employee Details"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.addressTextfield(0)"
+        value: "3200 Pioneer Dr, Cleburne, TX, 76033"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click LocationsV2.addressOption"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.annualSalesTextfield(0)"
+        value: "$10,029"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click LocationsV2.DoestheinsuredownthepropertyNoButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.buildingDropdown(0)"
+        value: "Non Combustible"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey LocationsV2.buildingDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.roofDropdown(0)"
+        value: "Clay Tiles"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey LocationsV2.roofDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.buildingBuiltTextfield(0)"
+        value: "2022"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.roofUpdatedTextfield(0)"
+        value: "2024"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.totalAreaTextfield(0)"
+        value: "1,009"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.totalStoriesTextfield"
+        value: "2"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.occupiedTextfield(0)"
+        value: "1,004"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.occupiedByOthersTextfield(0)"
+        value: "5"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.percentageBuildingSprinkleredInputTextfield(0)"
+        value: "20"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.burglarAlarmTypeDropdown(0)"
+        value: "Central Station Alarm System"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey LocationsV2.burglarAlarmTypeDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.buildingCoverageTextfield(0)"
+        value: "$2,204"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.libertyMutualCspCodeDropdown(0)"
+        value: "0702"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey LocationsV2.libertyMutualCspCodeDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.businessPersonalPropertyCoverageTextfield(0)"
+        value: "$2,002"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.personalPropertyLibertyMutualCspCodeTextfield(0)"
+        value: "0702"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey LocationsV2.personalPropertyLibertyMutualCspCodeTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEnabled LocationsV2.NewLocationButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click LocationsV2.NewLocationButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.addressTextfield(1)"
+        value: "6185 Buford Hwy NE, Peachtree Corners, GA, 30071"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click LocationsV2.addressOption"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.annualSalesTextfield(1)"
+        value: "$200"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click LocationsV2.doesTheInsuredOwnThePropertyYesButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.buildingDropdown(1)"
+        value: "Joisted Masonry"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey LocationsV2.buildingDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.roofDropdown(1)"
+        value: "Foam"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey LocationsV2.roofDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.buildingBuiltTextfield(1)"
+        value: "2018"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey LocationsV2.buildingBuiltTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.roofUpdatedTextfield(1)"
+        value: "2020"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey LocationsV2.roofUpdatedTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.totalAreaTextfield(1)"
+        value: "2,020"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.totalStoriesTextfieldTextfield"
+        value: "1"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.occupiedTextfield(1)"
+        value: "2,000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.occupiedByOthersTextfield(1)"
+        value: "20"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.percentageBuildingSprinkleredInputTextfield(1)"
+        value: "100"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.burglarAlarmTypeDropdown(1)"
+        value: "Local Alarm System"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey LocationsV2.burglarAlarmTypeDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.buildingCoverageTextfield(1)"
+        value: "$472,66"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.libertyMutualCspCodeDropdown(1)"
+        value: "0702"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.businessPersonalPropertyCoverageTextfield(1)"
+        value: "$2,002"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.personalPropertyLibertyMutualCspCodeTextfield(1)"
+        value: "0702"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click LocationsV2.nextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals PastPolicyLossV2.pageHeader"
+        value: "Past Policy Loss"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click PastPolicyLossV2.nextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.pageHeader"
+        value: "Underwriter Questions"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.selectedUnderwriterQuestions(0)"
+        value: "Common Underwriter Questions"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.AIUnderwriterButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.selectedUnderwriterQuestions(1)"
+        value: "Great American Insurance Group"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.AIUnderwriterButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.accountsReceivableLimitTextfield"
+        value: "28,000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.currentInsuranceCarrierTextfield"
+        value: "Bridgefield Employers Insurance Company"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.currentInsuranceCarrierTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.whatDeductibleWouldYouLikeForThisPolicyTextfield"
+        value: "$500"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.whatDeductibleWouldYouLikeForThisPolicyTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.medicalPaymentsLimitTextfield"
+        value: "$5,000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.medicalPaymentsLimitTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.damageToPremisesRentedTextfield"
+        value: "50,001"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.employeeDishonestyLimitTextfield"
+        value: "No coverage increase"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.employeeDishonestyLimitTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.PapersandRecordsLimit"
+        value: "25,000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.buildingDescriptionTextfield"
+        value: "Testing"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.CurrentlyProfessionalLiabilityCoverageTextfield"
+        value: "Yes, there is Professional Liability coverage in place"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.CurrentlyProfessionalLiabilityCoverageTextfield"
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.howManyMilesAreYouFromTheCoastTextfield"
+        value: "2 miles"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.howManyMilesAreYouFromTheCoastTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationBuildingDescription"
+        value: "Testing Second"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationHowmanymilesTextfield"
+        value: "1 mile or less than 1 mile"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.SecondLocationHowmanymilesTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationCurrentlyProfessionalLiabilitycoverage"
+        value: "No, but arrangements will be made to obtain coverage"
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.SecondLocationCurrentlyProfessionalLiabilitycoverage"
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationPleaselistotherbuildingoccupantsTextfield"
+        value: "5"
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationPercentageBuilding"
+        value: "5"
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationHowmanyapartments"
+        value: "5"
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.selectedUnderwriterQuestions(2)"
+        value: "AmTrust Financial Group"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.AIUnderwriterButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.statementAndDeclarationsYesButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.selectedUnderwriterQuestions(3)"
+        value: "Chubb"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.AIUnderwriterButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.HowManySpecialEventsTextfield"
+        value: " 5"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.medicalExpenseLimitTextfield"
+        value: "5000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.medicalExpenseLimitTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.howManySpecialEventsOrHostAnnuallyTextfield"
+        value: "9"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.selectTheFloorApplicantIsLocatedTextfield"
+        value: "Basement"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.selectTheFloorApplicantIsLocatedTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationSelectfloorapplicantlocatedTextfield"
+        value: "Basement"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.SecondLocationSelectfloorapplicantlocatedTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.selectedUnderwriterQuestions(4)"
+        value: "Liberty Mutual"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.AIUnderwriterButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.insuredsManagementExperienceTextfield"
+        value: "12"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.mostHazardousPropertyCodeTextfield"
+        value: "0702 - INSURANCE AGENTS - OFFICES"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.mostHazardousPropertyCodeTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.appropriateCoinsurancePercentageForBusinessPersonalPropertyTextfield"
+        value: "80%"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.appropriateCoinsurancePercentageForBusinessPersonalPropertyTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.selectTheAppropriateCoinsurancePercentageForBuildingCoverageDropdown"
+        value: "80%"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.selectTheAppropriateCoinsurancePercentageForBuildingCoverageDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.pleaseSelectAFireAlarmTypeDropdown"
+        value: "Central Station"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.pleaseSelectAFireAlarmTypeDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.selectAppropriateOccupancyTypeCategoryDropdown"
+        value: "Services"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.selectAppropriateOccupancyTypeCategoryDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.appropriateOccupancyTypePublicServicesTextfield"
+        value: "Boat Storage"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.appropriateOccupancyTypePublicServicesTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationAppropriatecoinsurancepercentageBuildingCoverage"
+        value: "80%"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.SecondLocationAppropriatecoinsurancepercentageBuildingCoverage"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationselectfirealarmtype"
+        value: "None"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.SecondLocationselectfirealarmtype"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationBusinessPerosnalCoverage"
+        value: "80%"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.SecondLocationBusinessPerosnalCoverage"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationSelectappropriateoccupancytypecategory"
+        value: "Offices"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.SecondLocationSelectappropriateoccupancytypecategory"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationSelectappropriateoccupancytype"
+        value: "Bank or Savings and Loan"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.SecondLocationSelectappropriateoccupancytype"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.selectedUnderwriterQuestions(5)"
+        value: "CNA Financial Corporation"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.AIUnderwriterButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2. ResponsibleforthemaintenancecommonareasTextfield"
+        value: "Occupant maintains common areas"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2. ResponsibleforthemaintenancecommonareasTextfield"
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.whatIsTheOccupancyTypeTextfield"
+        value: "Sole Occupancy"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.whatIsTheOccupancyTypeTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationResponsibleforthemaintenancecommon"
+        value: "Occupant maintains common areas"
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.SecondLocationResponsibleforthemaintenancecommon"
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationPleaseselectbuildingdeductibleamount"
+        value: "250"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.SecondLocationWhatistheoccupancytypeTextfield"
+        value: "Sole Occupancy"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.SecondLocationWhatistheoccupancytypeTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.statementAndDeclarationsYesButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals BrokerCodesV2.pageHeader"
+        value: "Broker Codes"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter BrokerCodesV2.amtrustFinancialGroupBrokerCodeTextfield"
+        value: "Automation Broker Code"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey BrokerCodesV2.amtrustFinancialGroupBrokerCodeTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter BrokerCodesV2.chubbBrokerCodeTextfield"
+        value: "Automation Broker Code"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey BrokerCodesV2.chubbBrokerCodeTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter BrokerCodesV2.cnaFinancialCorporationBrokerCodeTextfield"
+        value: "Automation Broker Code"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey BrokerCodesV2.cnaFinancialCorporationBrokerCodeTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter BrokerCodesV2.greatAmericanBrokerCodeTextfield"
+        value: "Automation Broker Code"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey BrokerCodesV2.greatAmericanBrokerCodeTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter BrokerCodesV2.libertyMutualBrokerCodeTextfield"
+        value: "Automation Broker Code"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey BrokerCodesV2.libertyMutualBrokerCodeTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEnabled BrokerCodesV2.GenerateQuote"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click BrokerCodesV2.GenerateQuote"
+    number: ""
+  - flow:
+      flowName: "SendToAdditionalMarketNoFlowV2"
+      id: 21115
+      data:
+        - flowName: "SendToAdditionalMarketNoFlowV2"
+          data:
+            - name: "QuotesV2.sendToOfflineMarketsHeader|output"
+              value: "Send to Additional Markets?"
+            - name: "QuotesV2.sendToOfflineMarketsSubheader|output"
+              value: "This risk has been declined by all market(s), would you like to send the application to additional markets?"
+    groupedDescription: "SendToAdditionalMarketNoFlowV2"
+  - step: ""
+    commands:
+      - command: "AssertEquals QuotesV2.pageHeader"
+        value: "Quotes"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Store QuotesV2.effectiveDateValue policyEffective"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Assign f:replace(variables.get('policyEffective'), ' ', '-') ${policyEffectiveDate}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Assign f:replace(variables.get('policyEffectiveDate'), '2026', '2027') ${policyEndDate}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click QuotesV2.quoteDetailsLink"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals QuotesV2.QuoteDetailsHeader"
+        value: "Quote Details"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals QuotesV2.rightSidebarPolicytypeValue"
+        value: "Package/Business Owner's Policy"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals QuotesV2.rightSidebarEffectiveDateValue"
+        value: "${policyEffectiveDate}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals QuotesV2.rightsSidebarExpiryValue"
+        value: "${policyEndDate}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertNotEmpty QuotesV2.totalPremiumValueSidebar"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click QuotesV2.closeQuoteDetailsButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEnabled QuotesV2.downloadQuotesButtonForAllAcceptedQuotes"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEnabled QuotesV2.bindOptions(0)"
+    number: ""
+  - flow:
+      flowName: "VerifyAmTrustDeclinedReasonIfExistsV2"
+      id: 21116
+      data:
+        - flowName: "Custom com.webomates.coverforcewebappdev.flow.custom.VerifyAmtrustDeclinedReason"
+    groupedDescription: "VerifyAmTrustDeclinedReasonIfExistsV2"
+  - flow:
+      flowName: "VerifyCNADeclinedReasonIfExistsV2"
+      id: 21117
+      data:
+        - flowName: "Custom com.webomates.coverforcewebappdev.flow.custom.VerifyCnaDeclinedReason"
+    groupedDescription: "VerifyCNADeclinedReasonIfExistsV2"
+  - flow:
+      flowName: "VerifyChubbDeclinedReasonIfExistsV2"
+      id: 21118
+      data:
+        - flowName: "Custom com.webomates.coverforcewebappdev.flow.custom.VerifyChubbDeclinedReason"
+    groupedDescription: "VerifyChubbDeclinedReasonIfExistsV2"
+  - flow:
+      flowName: "VerifyGaigDeclinedReasonIfExistsV2"
+      id: 21119
+      data:
+        - flowName: "Custom com.webomates.coverforcewebappdev.flow.custom.VerifyGaigDeclinedReason"
+    groupedDescription: "VerifyGaigDeclinedReasonIfExistsV2"
+  - flow:
+      flowName: "VerifyLMDeclinedReasonIfExistsV2"
+      id: 21120
+      data:
+        - flowName: "Custom com.webomates.coverforcewebappdev.flow.custom.VerifyLmDeclinedReason"
+    groupedDescription: "VerifyLMDeclinedReasonIfExistsV2"
+  - flow:
+      flowName: "StoreValuesV2"
+      id: 21121
+    groupedDescription: "StoreValuesV2"
+  - step: ""
+    commands:
+      - command: "CheckElementExistence QuotesV2.DownloadQuoteButtonExcludingAmTrust SuccessQuote"
+    number: ""
+  - step: ""
+    commands:
+      - command: "If(SuccessQuote)"
+    number: ""
+  - step: "Verify that the Policy Effective Date Vlaue is not empty."
+    commands:
+      - command: "AssertNotEmpty QuotesV2.policyTypeValue"
+    groupedDescription: "Verify that the Policy Effective Date Vlaue is not empty."
+    number: ""
+  - step: "Verify that the Quote Details Link is enabled."
+    commands:
+      - command: "AssertEnabled QuotesV2.quoteDetailsLink"
+    groupedDescription: "Verify that the Quote Details Link is enabled."
+    number: ""
+  - step: "Verify that the Download Quote Button is enabled."
+    commands:
+      - command: "AssertEnabled QuotesV2.downloadButton"
+    groupedDescription: "Verify that the Download Quote Button is enabled."
+    number: ""
+  - step: ""
+    commands:
+      - command: "CheckElementExistence QuotesV2.bindOptions bindoption"
+    number: ""
+  - step: ""
+    commands:
+      - command: "If(bindoption)"
+    number: ""
+  - step: "Verify that Bind Options or Next Steps Button is enabled."
+    commands:
+      - command: "AssertEnabled QuotesV2.bindOptions(1)"
+    groupedDescription: "Verify that Bind Options or Next Steps Button is enabled."
+    number: ""
+  - step: ""
+    commands:
+      - command: "End"
+    number: ""
+  - step: "Verify that the Premium Value is not empty."
+    commands:
+      - command: "AssertNotEmpty QuotesV2.premiumValue"
+    groupedDescription: "Verify that the Premium Value is not empty."
+    number: ""
+  - step: "Click on Download Quote Button Other than Amtrust carrier."
+    commands:
+      - command: "Click QuotesV2.DownloadQuoteButtonExcludingAmTrust"
+    groupedDescription: "Click on Download Quote Button Other than Amtrust carrier."
+    number: ""
+  - step: ""
+    commands:
+      - command: "WaitElementVisibility QuotesV2.downloadToastMessage 350"
+    number: ""
+  - step: "Verify that Download Toast Mssage is equal to <cmetac-data>Downloaded Quote Proposal!</cmetac-data>."
+    commands:
+      - command: "AssertEquals QuotesV2.downloadToastMessage"
+        value: "Downloaded Quote Proposal!"
+    groupedDescription: "Verify that Download Toast Mssage is equal to <cmetac-data>Downloaded Quote Proposal!</cmetac-data>."
+    number: ""
+  - step: ""
+    commands:
+      - command: "WaitForGUI 30"
+    number: ""
+  - step: "Verify that the Quote is Downloaded."
+    commands:
+      - command: "Custom com.webomates.coverforcewebappdev.flow.custom.ReadCsvFile2"
+    groupedDescription: "Verify that the Quote is Downloaded."
+    number: ""
+  - step: ""
+    commands:
+      - command: "End"
+    number: ""
+  - flow:
+      flowName: "ValidateCarrierBridgePortalUrlV2"
+      id: 21122
+      data:
+        - flowName: "Custom com.webomates.coverforcewebappdev.flow.custom.ValidateCarrierNameInUrl"
+        - flowName: "ValidateCarrierBridgePortalUrlV2"
+          data:
+            - name: "QuotesV2.modalHeader|output"
+              value: "Bridge to Carrier"
+    groupedDescription: "ValidateCarrierBridgePortalUrlV2"
+afterTest:
+  - flow:
+      flowName: "Logout"
+      id: 3195

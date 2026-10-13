@@ -1,0 +1,1009 @@
+testCaseId: "CD-614"
+testCaseName: "Agent_NonApplication_AccountApplications_Applications_CloneApplication_MarkAsBound"
+scenarioName: "Agent_NonApplication_AccountApplications_Applications_CloneApplication_MarkAsBound"
+summary: "v2 - User having Agent role should be able to clone an existing application and mark applications with different statuses, such as Quoted, Declined, and In Progress, as bound on the Account Applications page."
+steps:
+  - flow:
+      flowName: "Login"
+      id: 3194
+      data:
+        - flowName: "Login"
+          data:
+            - name: "Login.EmailAddressTextField|input"
+              value: "webomates.test+osagent@gmail.com"
+            - name: "Login.PasswordTextField|input"
+              value: "webomates.test+osagent@gmail.com"
+    groupedDescription: "Login"
+  - step: ""
+    commands:
+      - command: "Click LeftSidebar.AccountsOption"
+    number: ""
+  - flow:
+      flowName: "AddAccountV2"
+      id: 20718
+      data:
+        - flowName: "AddAccountV2"
+          data:
+            - name: "AccountsV2.addAccountHeaderUnderAddAccountSection|output"
+              value: "Add Account"
+            - name: "AccountsV2.accountNameTextfieldUnderAddAccountSection|input"
+              value: "${accountName}"
+            - name: "AccountsV2.firstNameTextfieldUnderAddAccountSection|input"
+              value: "${firstName}"
+            - name: "AccountsV2.lastNameTextfieldUnderAddAccountSection|input"
+              value: "${lastName}"
+            - name: "AccountsV2.emailTextfieldUnderAddAccountSection|input"
+              value: "${email}"
+            - name: "AccountsV2.phoneNumberTextfieldUnderAddAccountSection|input"
+              value: "9988775512"
+            - name: "AccountsV2.addressLine1TextfieldUnderAddAccountSection|input"
+              value: "1122 King Rd, Oneonta"
+            - name: "AccountsV2.cityTextfieldUnderAddAccountSection|input"
+              value: "Stamford"
+            - name: "AccountsV2.stateDropdownUnderAddAccountSection|input"
+              value: "CT"
+            - name: "AccountsV2.zipCodeTextfieldUnderAddAccountSection|input"
+              value: "06905"
+    groupedDescription: "AddAccountV2"
+  - step: ""
+    commands:
+      - command: "Click GeneralQuestionsV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.PageHeader"
+        value: "Location and Employee Details"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.BackButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter AccountApplicationsV2.searchApplicationsTextfield"
+        value: "${InsuredName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey AccountApplicationsV2.searchApplicationsTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertContains AccountApplicationsV2.insuredColumnData"
+        value: "${InsuredName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertNotEmpty AccountApplicationsV2.policyColumnData"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertNotEmpty AccountApplicationsV2.agentColumnData"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals AccountApplicationsV2.statusColumnData"
+        value: "In Progress"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click AccountApplicationsV2.newQuoteButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.PolicyTypeDropdown"
+        value: "Builder's Risk"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.PolicyTypeDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.NAICSCodeDropdown"
+        value: "238140"
+    number: ""
+  - step: ""
+    commands:
+      - command: "SelectAdvance NewQuoteV2.NaicsDropdownOption"
+        value: "238140"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.StateDropdown"
+        value: "Georgia"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.StateDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.AccountDropdown"
+        value: "${accountName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.StartApplicationButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.IndustrySelectionHeader"
+        value: "Industry Selection"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter f:concat(f:substring(\"GeneralQuestionsV2.BusinessName\", 0, 0), \"Webomates \" + variables.get(\"randomWords\").toString()) ${InsuredName2}"
+        value: "${InsuredName2}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey GeneralQuestionsV2.BusinessName"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.BusinessDescription"
+        value: "Testing"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.NatureConstructionProject"
+        value: "New Construction"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey GeneralQuestionsV2.NatureConstructionProject"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.FirstName"
+        value: "${firstName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.LastName"
+        value: "${lastName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.PhoneNumber"
+        value: "(998) 877-5512"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.PolicyEffectiveDate"
+        value: "${todaysDate}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey GeneralQuestionsV2.PolicyEffectiveDate"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click GeneralQuestionsV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals LocationsV2.PageHeader"
+        value: "Location and Employee Details"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.addressTextfield"
+        value: "6185 Buford Hwy NE"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.buildingConstructionTypeDropdown"
+        value: "Masonry Non Combustible"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey LocationsV2.buildingConstructionTypeDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.totalStoriesTextfield"
+        value: "5"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.areaOfConstructionProjectTextfield"
+        value: "4,700"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.totalConstructionProjectValueTextfield"
+        value: "44,000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click LocationsV2.nextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "WaitForGUI 5"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals LocationsV2.PageHeader"
+        value: "Past Policy Loss"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click LocationsV2.nextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals LocationsV2.PageHeader"
+        value: "Underwriter Questions"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.customerFiledAnyBankruptciesInTheLast5YearsNoButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.hadCoverageCancelledOrNonRenewedInThePast3YearsNoButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.isContractorCompliantWithStateOrLocalLicensingRequirementsYesButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.hasTheProjectBegunYesButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.pleaseSelectTheProtectionClassDropdown"
+        value: "PC 1 - 6"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.pleaseSelectTheProtectionClassDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.pleaseSelectTheIntendedJobsiteOccupancyDropdown"
+        value: "Contractor’s Storage & Office & Maint."
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.pleaseSelectTheIntendedJobsiteOccupancyDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.pleaseSelectTheAllOtherPerilsDeductibleDropdown"
+        value: "1000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.pleaseSelectTheAllOtherPerilsDeductibleDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.pleaseSelectTheTemporaryLocationsLimitDropdown"
+        value: "10000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.pleaseSelectTheTemporaryLocationsLimitDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.pleaseSelectTheTransitLimitDropdown"
+        value: "10000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.pleaseSelectTheTransitLimitDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.wantToIncludeFloodCoverageDropdown"
+        value: "Not Covered"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.wantToIncludeFloodCoverageDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.wantToIncludeEarthquakeCoverageDropdown"
+        value: "Not Covered"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.wantToIncludeEarthquakeCoverageDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.wantToIncludeEquipmentBreakdownCoverageDropdown"
+        value: "Not Covered"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.wantToIncludeEquipmentBreakdownCoverageDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.wantToIncludeTimeElementDropdown"
+        value: "Not Covered"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.wantToIncludeTimeElementDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.PageHeader"
+        value: "Broker Codes"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click BrokerCodesV2.nextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter BrokerCodesV2.greatAmericanBrokerCodeTextfield"
+        value: "GAIG BR"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey BrokerCodesV2.greatAmericanBrokerCodeTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEnabled BrokerCodesV2.GenerateQuote"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click BrokerCodesV2.GenerateQuote"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals QuotesV2.pageHeader"
+        value: "Quotes"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals QuotesV2.policyTypeValue"
+        value: "Builder’s Risk"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertNotEmpty QuotesV2.effectiveDateValue"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.QuoteStatus"
+        value: "Instantly Bindable"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.BackButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter AccountApplicationsV2.searchApplicationsTextfield"
+        value: "${InsuredName2}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey AccountApplicationsV2.searchApplicationsTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "WaitForGUI 5"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals AccountApplicationsV2.insuredColumnData"
+        value: "${InsuredName2}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertNotEmpty AccountApplicationsV2.policyColumnData"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertNotEmpty AccountApplicationsV2.agentColumnData"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals AccountApplicationsV2.statusColumnData"
+        value: "Quoted"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click AccountApplicationsV2.newQuoteButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.PolicyTypeDropdown"
+        value: "Builder's Risk"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.PolicyTypeDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.NAICSCodeDropdown"
+        value: "238140"
+    number: ""
+  - step: ""
+    commands:
+      - command: "SelectAdvance NewQuoteV2.NaicsDropdownOption"
+        value: "238140"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.StateDropdown"
+        value: "Georgia"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.StateDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.AccountDropdown"
+        value: "${accountName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.StartApplicationButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.IndustrySelectionHeader"
+        value: "Industry Selection"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter f:concat(f:substring(\"GeneralQuestionsV2.BusinessName\", 0, 0), \"Webomates \" + variables.get(\"randomWords\").toString()) ${InsuredName3}"
+        value: "${InsuredName3}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey GeneralQuestionsV2.BusinessName"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.BusinessDescription"
+        value: "Testing"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.NatureConstructionProject"
+        value: "New Construction"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey GeneralQuestionsV2.NatureConstructionProject"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.FirstName"
+        value: "${firstName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.LastName"
+        value: "${lastName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.PhoneNumber"
+        value: "(998) 877-5512"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.PolicyEffectiveDate"
+        value: "${todaysDate}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey GeneralQuestionsV2.PolicyEffectiveDate"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click GeneralQuestionsV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals LocationsV2.PageHeader"
+        value: "Location and Employee Details"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.addressTextfield"
+        value: "6185 Buford Hwy NE"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.buildingConstructionTypeDropdown"
+        value: "Masonry Non Combustible"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey LocationsV2.buildingConstructionTypeDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.totalStoriesTextfield"
+        value: "5"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.areaOfConstructionProjectTextfield"
+        value: "4,700"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter LocationsV2.totalConstructionProjectValueTextfield"
+        value: "44,000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click LocationsV2.nextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "WaitForGUI 5"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals LocationsV2.PageHeader"
+        value: "Past Policy Loss"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click LocationsV2.nextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals LocationsV2.PageHeader"
+        value: "Underwriter Questions"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.customerFiledAnyBankruptciesInTheLast5YearsNoButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.hadCoverageCancelledOrNonRenewedInThePast3YearsNoButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.isContractorCompliantWithStateOrLocalLicensingRequirementsYesButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.hasTheProjectBegunYesButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.pleaseSelectTheProtectionClassDropdown"
+        value: "PC 1 - 6"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.pleaseSelectTheProtectionClassDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.pleaseSelectTheIntendedJobsiteOccupancyDropdown"
+        value: "Contractor’s Storage & Office & Maint."
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.pleaseSelectTheIntendedJobsiteOccupancyDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.pleaseSelectTheAllOtherPerilsDeductibleDropdown"
+        value: "1000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.pleaseSelectTheAllOtherPerilsDeductibleDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.pleaseSelectTheTemporaryLocationsLimitDropdown"
+        value: "10000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.pleaseSelectTheTemporaryLocationsLimitDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.pleaseSelectTheTransitLimitDropdown"
+        value: "10000"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.pleaseSelectTheTransitLimitDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.wantToIncludeFloodCoverageDropdown"
+        value: "Not Covered"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.wantToIncludeFloodCoverageDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.wantToIncludeEarthquakeCoverageDropdown"
+        value: "Not Covered"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.wantToIncludeEarthquakeCoverageDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.wantToIncludeEquipmentBreakdownCoverageDropdown"
+        value: "Not Covered"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.wantToIncludeEquipmentBreakdownCoverageDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter NewQuoteV2.wantToIncludeTimeElementDropdown"
+        value: "Not Covered"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey NewQuoteV2.wantToIncludeTimeElementDropdown"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.PageHeader"
+        value: "Broker Codes"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click BrokerCodesV2.nextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEnabled BrokerCodesV2.GenerateQuote"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click BrokerCodesV2.GenerateQuote"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals QuotesV2.pageHeader"
+        value: "Quotes"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals QuotesV2.policyTypeValue"
+        value: "Builder’s Risk"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertNotEmpty QuotesV2.effectiveDateValue"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.DeclinedMessage"
+        value: "The carrier has declined to insure this application."
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.QuoteStatus"
+        value: "Declined"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.BackButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter AccountApplicationsV2.searchApplicationsTextfield"
+        value: "${InsuredName3}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey AccountApplicationsV2.searchApplicationsTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "WaitForGUI 5"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals AccountApplicationsV2.insuredColumnData"
+        value: "${InsuredName3}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertNotEmpty AccountApplicationsV2.policyColumnData"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertNotEmpty AccountApplicationsV2.agentColumnData"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals AccountApplicationsV2.statusColumnData"
+        value: "Quoted"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter AccountApplicationsV2.searchApplicationsTextfield"
+        value: "${InsuredName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "WaitForGUI 5"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click AccountApplicationsV2.cloneApplicationButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.CloneApplicationHeader"
+        value: "Clone Application"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.CloneApplicationDescription"
+        value: "Your data will be transferred from the previous version."
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.PolicyTypeDropdown"
+        value: "Builder's Risk"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertContains NewQuoteV2.NAICSCodeDropdown"
+        value: "238140"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.AccountDropdown"
+        value: "${accountName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.CloneApplication"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.SuccessMessage"
+        value: "Application Cloned Successfully!"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertContains NewQuoteV2.SuccessMessageDescription"
+        value: "${accountName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.IndustrySelectionHeader"
+        value: "Industry Selection"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.PageHeader"
+        value: "General Questions"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.BusinessName"
+        value: "${InsuredName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey GeneralQuestionsV2.BusinessName"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click GeneralQuestionsV2.NextButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "WaitForGUI 5"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.PageHeader"
+        value: "Location and Employee Details"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.BackButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter AccountApplicationsV2.searchApplicationsTextfield"
+        value: "${InsuredName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey AccountApplicationsV2.searchApplicationsTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals AccountApplicationsV2.insuredColumnData"
+        value: "${InsuredName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals AccountApplicationsV2.statusColumnData"
+        value: "In Progress"
+    number: ""
+  - flow:
+      flowName: "InProgressTOMarkAsBound"
+      id: 21085
+      data:
+        - flowName: "InProgressTOMarkAsBound"
+          data:
+            - name: "ApplicationsV2.ModalHeader|output"
+              value: "Mark as Bound"
+              reusedSequence: 0
+            - name: "ApplicationsV2.BoundPolicyOffline|output"
+              value: "Bound this Policy Offline?"
+              reusedSequence: 0
+            - name: "ApplicationsV2.MessageDescription|output"
+              value: "This records that the policy was"
+            - name: "ApplicationsV2.MessageDescription|output"
+              value: "bound offline"
+            - name: "ApplicationsV2.MessageDescription|output"
+              value: "It does not bind it on the platform."
+            - name: "ApplicationsV2.SelectCarriertitle|output"
+              value: "Select the Carrier you Bound with"
+              reusedSequence: 0
+            - name: "ApplicationsV2.InsuredNameOnModal|output"
+              value: "${InsuredName}"
+              reusedSequence: 0
+            - name: "ApplicationsV2.TotalPremiumTextfield|input"
+              value: "1000"
+              reusedSequence: 0
+            - name: "ApplicationsV2.policyNumber|input"
+              value: "456123"
+              reusedSequence: 0
+            - name: "ApplicationsV2.MakedAsBoundSuccessMessage|output"
+              value: "Marked as Bound"
+              reusedSequence: 0
+            - name: "ApplicationsV2.PremiumTextINModal|output"
+              value: "Premium"
+              reusedSequence: 0
+            - name: "ApplicationsV2.PremiumValueInModal|output"
+              value: "1000"
+              reusedSequence: 0
+    groupedDescription: "InProgressTOMarkAsBound"
+  - step: ""
+    commands:
+      - command: "Enter AccountApplicationsV2.searchApplicationsTextfield"
+        value: "${InsuredName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "PressEnterKey AccountApplicationsV2.searchApplicationsTextfield"
+    number: ""
+  - step: ""
+    commands:
+      - command: "WaitForGUI 5"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals AccountApplicationsV2.insuredColumnData"
+        value: "${InsuredName}"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertEquals AccountApplicationsV2.statusColumnData"
+        value: "Bound"
+    number: ""
+  - step: ""
+    commands:
+      - command: "AssertVisible AccountApplicationsV2.markAsBoundButton"
+    number: ""
+  - step: ""
+    commands:
+      - command: "Enter AccountApplicationsV2.searchApplicationsTextfield"
+        value: "${InsuredName2}"
+  - step: ""
+    commands:
+      - command: "PressEnterKey AccountApplicationsV2.searchApplicationsTextfield"
+  - step: ""
+    commands:
+      - command: "Click AccountApplicationsV2.cloneApplicationButton"
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.CloneApplicationHeader"
+        value: "Clone Application"
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.CloneApplicationDescription"
+        value: "Your data will be transferred from the previous version."
+  - step: ""
+    commands:
+      - command: "Click NewQuoteV2.CloneApplication"
+  - step: ""
+    commands:
+      - command: "AssertEquals NewQuoteV2.SuccessMessage"
+        value: "Application Cloned Successfully!"
+  - step: ""
+    commands:
+      - command: "AssertContains NewQuoteV2.SuccessMessage"
+        value: "${accountName}"
+  - step: ""
+    commands:
+      - command: "Enter GeneralQuestionsV2.BusinessName"
+        value: "${InsuredName2}"
+  - step: ""
+    commands:
+      - command: "Click GeneralQuestionsV2.NextButton"
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.PageHeader"
+        value: "Location and Employee Details"
+  - step: ""
+    commands:
+      - command: "Click GeneralQuestionsV2.NextButton"
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.PageHeader"
+        value: "Underwriter Questions"
+  - step: ""
+    commands:
+      - command: "Click GeneralQuestionsV2.NextButton"
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.PageHeader"
+        value: "Broker Codes"
+  - step: ""
+    commands:
+      - command: "Click GeneralQuestionsV2.NextButton"
+  - step: ""
+    commands:
+      - command: "AssertEquals GeneralQuestionsV2.PageHeader"
+        value: "Quotes"
+  - step: ""
+    commands:
+      - command: "Enter AccountApplicationsV2.searchApplicationsTextfield"
+        value: "${InsuredName2}"
+afterTest:
+  - flow:
+      flowName: "Logout"

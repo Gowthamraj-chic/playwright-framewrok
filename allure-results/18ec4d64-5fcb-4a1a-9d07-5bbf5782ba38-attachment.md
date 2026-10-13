@@ -1,0 +1,236 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Chapter05\03_POMLogin.spec.ts >> POM Testcase
+- Location: tests\Chapter05\03_POMLogin.spec.ts:5:5
+
+# Error details
+
+```
+Error: expect(page).toHaveURL(expected) failed
+
+Expected: "https://github.com/"
+Received: "https://github.com/session"
+Timeout:  5000ms
+
+Call log:
+  - Expect "soft toHaveURL" with timeout 5000ms
+    - waiting for navigation to finish...
+    - navigated to "https://github.com/session"
+    10 × locator resolved to <html lang="en" class="html-auth" data-turbo-loaded="" data-color-mode="auto" data-dark-theme="dark" data-light-theme="light" data-a11y-link-underlines="true" data-a11y-animated-images="system">…</html>
+       - unexpected value "https://github.com/session"
+
+```
+
+```yaml
+- link "Skip to content":
+  - /url: "#start-of-content"
+- banner
+- main:
+  - heading "Sign in to GitHub" [level=1]
+  - button "Dismiss this message"
+  - alert: Incorrect username or password.
+  - text: Username or email address
+  - textbox "Username or email address": Testing
+  - text: Password
+  - textbox "Password"
+  - link "Forgot password?":
+    - /url: /password_reset
+  - button "Sign in"
+  - text: or
+  - button "Continue with Google":
+    - img
+    - text: Continue with Google
+  - button "Continue with Apple":
+    - img
+    - text: Continue with Apple
+  - paragraph:
+    - text: New to GitHub?
+    - link "Create an account":
+      - /url: /signup?return_to=https%3A%2F%2Fgithub.com%2Flogin&source=login
+  - paragraph:
+    - button "Sign in with a passkey"
+- contentinfo:
+  - list:
+    - listitem:
+      - link "Terms":
+        - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+    - listitem:
+      - link "Privacy":
+        - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+    - listitem:
+      - link "Docs":
+        - /url: https://docs.github.com
+    - listitem:
+      - link "Contact GitHub Support":
+        - /url: https://support.github.com
+    - listitem:
+      - button "Manage cookies"
+    - listitem:
+      - button "Do not share my personal information"
+```
+
+```
+Error: expect(page).toHaveURL(expected) failed
+
+Expected: "https://github.com//session"
+Received: "https://github.com/session"
+Timeout:  5000ms
+
+Call log:
+  - Expect "soft toHaveURL" with timeout 5000ms
+    13 × locator resolved to <html lang="en" class="html-auth" data-turbo-loaded="" data-color-mode="auto" data-dark-theme="dark" data-light-theme="light" data-a11y-link-underlines="true" data-a11y-animated-images="system">…</html>
+       - unexpected value "https://github.com/session"
+
+```
+
+```yaml
+- link "Skip to content":
+  - /url: "#start-of-content"
+- banner
+- main:
+  - heading "Sign in to GitHub" [level=1]
+  - button "Dismiss this message"
+  - alert: Incorrect username or password.
+  - text: Username or email address
+  - textbox "Username or email address": Testing
+  - text: Password
+  - textbox "Password"
+  - link "Forgot password?":
+    - /url: /password_reset
+  - button "Sign in"
+  - text: or
+  - button "Continue with Google":
+    - img
+    - text: Continue with Google
+  - button "Continue with Apple":
+    - img
+    - text: Continue with Apple
+  - paragraph:
+    - text: New to GitHub?
+    - link "Create an account":
+      - /url: /signup?return_to=https%3A%2F%2Fgithub.com%2Flogin&source=login
+  - paragraph:
+    - button "Sign in with a passkey"
+- contentinfo:
+  - list:
+    - listitem:
+      - link "Terms":
+        - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+    - listitem:
+      - link "Privacy":
+        - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+    - listitem:
+      - link "Docs":
+        - /url: https://docs.github.com
+    - listitem:
+      - link "Contact GitHub Support":
+        - /url: https://support.github.com
+    - listitem:
+      - button "Manage cookies"
+    - listitem:
+      - button "Do not share my personal information"
+```
+
+```
+Error: expect(page).toHaveURL(expected) failed
+
+Expected: "https://github.com//session"
+Received: "https://github.com/session"
+Timeout:  5000ms
+
+Call log:
+  - Expect "soft toHaveURL" with timeout 5000ms
+    13 × locator resolved to <html lang="en" class="html-auth" data-turbo-loaded="" data-color-mode="auto" data-dark-theme="dark" data-light-theme="light" data-a11y-link-underlines="true" data-a11y-animated-images="system">…</html>
+       - unexpected value "https://github.com/session"
+
+```
+
+```yaml
+- link "Skip to content":
+  - /url: "#start-of-content"
+- banner
+- main:
+  - heading "Sign in to GitHub" [level=1]
+  - button "Dismiss this message"
+  - alert: Incorrect username or password.
+  - text: Username or email address
+  - textbox "Username or email address": Testing
+  - text: Password
+  - textbox "Password"
+  - link "Forgot password?":
+    - /url: /password_reset
+  - button "Sign in"
+  - text: or
+  - button "Continue with Google":
+    - img
+    - text: Continue with Google
+  - button "Continue with Apple":
+    - img
+    - text: Continue with Apple
+  - paragraph:
+    - text: New to GitHub?
+    - link "Create an account":
+      - /url: /signup?return_to=https%3A%2F%2Fgithub.com%2Flogin&source=login
+  - paragraph:
+    - button "Sign in with a passkey"
+- contentinfo:
+  - list:
+    - listitem:
+      - link "Terms":
+        - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+    - listitem:
+      - link "Privacy":
+        - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+    - listitem:
+      - link "Docs":
+        - /url: https://docs.github.com
+    - listitem:
+      - link "Contact GitHub Support":
+        - /url: https://support.github.com
+    - listitem:
+      - button "Manage cookies"
+    - listitem:
+      - button "Do not share my personal information"
+```
+
+# Test source
+
+```ts
+  1  | import { expect, Locator, Page } from '@playwright/test'
+  2  | 
+  3  | export class InvalidLoginPage {
+  4  | 
+  5  |     readonly page: Page;
+  6  |     readonly SignInButton: Locator
+  7  |     readonly errorMessage: Locator
+  8  | 
+  9  | 
+  10 | 
+  11 |     constructor(page: Page) {
+  12 | 
+  13 |         this.page = page
+  14 |         this.SignInButton = page.getByRole('button', { name: 'Sign in' })
+  15 |         this.errorMessage = page.getByRole('alert')
+  16 | 
+  17 | 
+  18 |     }
+  19 | 
+  20 |     async ValdiateURL(title: RegExp, Message: string) {
+  21 | 
+  22 |         await expect.soft(this.page).toHaveURL(`${process.env.GitHUb_HomeURL}`)
+  23 |         await expect.soft(this.page).toHaveURL(`${process.env.GitHUb_HomeURL}` + '/session')
+> 24 |         await expect.soft(this.page).toHaveURL(`${process.env.GitHUb_HomeURL}/session`)
+     |                                      ^ Error: expect(page).toHaveURL(expected) failed
+  25 |         await expect.soft(this.page).toHaveTitle(title)
+  26 |         await expect.soft(this.errorMessage).toHaveText(Message)
+  27 | 
+  28 |     }
+  29 | 
+  30 | }
+```
