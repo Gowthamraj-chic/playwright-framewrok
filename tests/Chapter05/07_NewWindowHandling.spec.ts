@@ -14,7 +14,7 @@ test('Test title', async({page})=>{
 
         await newWindow.waitForLoadState('domcontentloaded')
 
-       await expect(newWindow.getByTestId('close-btn')).toBeEnabled()
+       await expect(newWindow.getByTestId('close-btn')).toBeEnabled({timeout:1000})
 
     })
 })

@@ -26,7 +26,7 @@ test('GitHub', async ({ page }) => {
     })
 
     await test.step('Verify the incorrect error message', async () => {
-        await expect(page.getByText('Incorrect username or')).toHaveText('Incorrect username or password.')
+        await expect(page.getByText('Incorrect username or')).toHaveText('Updated valdiation')
     })
 
     await page.close()
